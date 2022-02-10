@@ -70,7 +70,6 @@ define "Denominator Exclusion":
 define "Absence of Cervix":
 	[Condition : "Congenital absence of cervix (disorder)"] NoCervixBirth
   		where Global."Normalize Interval"(NoCervixBirth.onset) starts before end of "Measurement Period"
-        and NoCervixBirth.clinicalStatus ~ Global."active"
 
 define "Surgical Absence of Cervix":
 	[Procedure: "Hysterectomy with No Residual Cervix"] NoCervixHysterectomy
