@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation translatorVersion="2.4.0" translatorOptions="EnableAnnotations,EnableLocators,EnableResultTypes,DisableListDemotion,DisableListPromotion" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:t name="update" value="BTR 2020-03-31 ->&#xa;Incremented version to 2.0.0"/>
+      <a:t name="update" value="BTR 2022-05-26 ->&#xa;Updated FHIR version to 4.0.1&#xa;Updated FHIRHelpers version to 4.0.002&#xa;Updated for AU 2022 Content"/>
+      <a:s r="45">
+         <a:s>/*
+@update: BTR 2020-03-31 ->
+Incremented version to 2.0.0
+
+@update: BTR 2022-05-26 ->
+Updated FHIR version to 4.0.1
+Updated FHIRHelpers version to 4.0.002
+Updated for AU 2022 Content
+*/
+library SupplementalDataElementsQICore4 version '3.0.000'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="SupplementalDataElementsQICore4" version="3.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="13:1-13:28" localIdentifier="QICore" uri="http://hl7.org/fhir">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>QICore</a:s>
+               </a:s>
+               <a:s> version '4.1.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="2" locator="15:1-15:56" localIdentifier="FHIRHelpers" path="FHIRHelpers" version="4.0.013">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="2">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s> version '4.0.013' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <valueSets>
+      <def localId="3" locator="17:1-17:87" resultTypeName="t:ValueSet" name="Ethnicity" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="3">
+               <a:s>valueset &quot;Ethnicity&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="4" locator="18:1-18:97" resultTypeName="t:ValueSet" name="ONC Administrative Sex" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="4">
+               <a:s>valueset &quot;ONC Administrative Sex&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="5" locator="19:1-19:84" resultTypeName="t:ValueSet" name="Payer" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="5">
+               <a:s>valueset &quot;Payer&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="6" locator="20:1-20:82" resultTypeName="t:ValueSet" name="Race" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="6">
+               <a:s>valueset &quot;Race&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </valueSets>
+   <contexts>
+      <def locator="22:1-22:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def locator="22:1-22:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="22:1-22:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="10" locator="24:1-25:24" resultTypeName="t:String" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="10">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+  </a:s>
+               <a:s r="9">
+                  <a:s r="8">
+                     <a:s r="7">
+                        <a:s>Patient</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="8">
+                        <a:s>ethnicity</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="9">
+                     <a:s>text</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="9" locator="25:3-25:24" resultTypeName="t:String" xsi:type="SingletonFrom">
+            <operand xsi:type="Query">
+               <source alias="$this">
+                  <expression path="extension" xsi:type="Property">
+                     <source localId="8" locator="25:3-25:19" resultTypeName="fhir:USCoreEthnicityExtension" xsi:type="SingletonFrom">
+                        <operand xsi:type="Query">
+                           <source alias="$this">
+                              <expression path="extension" xsi:type="Property">
+                                 <source localId="7" locator="25:3-25:9" resultTypeName="fhir:Patient" name="Patient" xsi:type="ExpressionRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="Equal">
+                              <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <operand path="url" scope="$this" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:String" value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity" xsi:type="Literal"/>
+                           </where>
+                        </operand>
+                     </source>
+                  </expression>
+               </source>
+               <where xsi:type="Equal">
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="url" scope="$this" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="text" xsi:type="Literal"/>
+               </where>
+               <return distinct="false">
+                  <expression path="value.value" xsi:type="Property">
+                     <source name="$this" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="20" locator="27:1-32:5" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="20">
+               <a:s>define &quot;SDE Payer&quot;:
+  </a:s>
+               <a:s r="19">
+                  <a:s>
+                     <a:s r="12">
+                        <a:s r="11">
+                           <a:s r="11">
+                              <a:s>[Coverage: </a:s>
+                              <a:s>
+                                 <a:s>type</a:s>
+                              </a:s>
+                              <a:s> in </a:s>
+                              <a:s>
+                                 <a:s>&quot;Payer&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Payer</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="18">
+                     <a:s>return </a:s>
+                     <a:s r="17">
+                        <a:s>{
+      </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="14">
+                              <a:s r="13">
+                                 <a:s>Payer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="14">
+                                 <a:s>type</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s>
+                           <a:s>period: </a:s>
+                           <a:s r="16">
+                              <a:s r="15">
+                                 <a:s>Payer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="16">
+                                 <a:s>period</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    }</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="code">
+                  <elementType name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="period">
+                  <elementType xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="19" locator="28:3-32:5" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="code">
+                     <elementType name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="period">
+                     <elementType xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source localId="12" locator="28:3-28:35" alias="Payer">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Coverage" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="11" locator="28:3-28:29" dataType="fhir:Coverage" templateId="http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage" codeProperty="type" codeComparator="in" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Coverage" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="28:22-28:28" resultTypeName="t:ValueSet" name="Payer" preserve="true" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return localId="18" locator="29:5-32:5">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <elementType name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="period">
+                        <elementType xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </element>
+                  </elementType>
+               </resultTypeSpecifier>
+               <expression localId="17" locator="29:12-32:5" xsi:type="Tuple">
+                  <resultTypeSpecifier xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <elementType name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="period">
+                        <elementType xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </element>
+                  </resultTypeSpecifier>
+                  <element name="code">
+                     <value localId="14" locator="30:13-30:22" resultTypeName="t:Concept" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                        <operand path="type" scope="Payer" xsi:type="Property"/>
+                     </value>
+                  </element>
+                  <element name="period">
+                     <value localId="16" locator="31:15-31:26" name="ToInterval" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand path="period" scope="Payer" xsi:type="Property"/>
+                     </value>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="24" locator="34:1-35:19" resultTypeName="t:String" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="24">
+               <a:s>define &quot;SDE Race&quot;:
+  </a:s>
+               <a:s r="23">
+                  <a:s r="22">
+                     <a:s r="21">
+                        <a:s>Patient</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="22">
+                        <a:s>race</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="23">
+                     <a:s>text</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="23" locator="35:3-35:19" resultTypeName="t:String" xsi:type="SingletonFrom">
+            <operand xsi:type="Query">
+               <source alias="$this">
+                  <expression path="extension" xsi:type="Property">
+                     <source localId="22" locator="35:3-35:14" resultTypeName="fhir:USCoreRaceExtension" xsi:type="SingletonFrom">
+                        <operand xsi:type="Query">
+                           <source alias="$this">
+                              <expression path="extension" xsi:type="Property">
+                                 <source localId="21" locator="35:3-35:9" resultTypeName="fhir:Patient" name="Patient" xsi:type="ExpressionRef"/>
+                              </expression>
+                           </source>
+                           <where xsi:type="Equal">
+                              <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <operand path="url" scope="$this" xsi:type="Property"/>
+                              </operand>
+                              <operand valueType="t:String" value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race" xsi:type="Literal"/>
+                           </where>
+                        </operand>
+                     </source>
+                  </expression>
+               </source>
+               <where xsi:type="Equal">
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="url" scope="$this" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="text" xsi:type="Literal"/>
+               </where>
+               <return distinct="false">
+                  <expression path="value.value" xsi:type="Property">
+                     <source name="$this" xsi:type="AliasRef"/>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="45" locator="37:1-42:7" resultTypeName="t:Code" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="45">
+               <a:s>define &quot;SDE Sex&quot;:
+  </a:s>
+               <a:s r="44">
+                  <a:s>case
+      </a:s>
+                  <a:s r="33">
+                     <a:s>when </a:s>
+                     <a:s r="28">
+                        <a:s r="26">
+                           <a:s r="25">
+                              <a:s>Patient</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="26">
+                              <a:s>gender</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="27">
+                           <a:s>'male'</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> then </a:s>
+                     <a:s r="32">
+                        <a:s>Code { </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="29">
+                              <a:s>'M'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>system: </a:s>
+                           <a:s r="30">
+                              <a:s>'http://hl7.org/fhir/v3/AdministrativeGender'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>display: </a:s>
+                           <a:s r="31">
+                              <a:s>'Male'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> }</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+      </a:s>
+                  <a:s r="42">
+                     <a:s>when </a:s>
+                     <a:s r="37">
+                        <a:s r="35">
+                           <a:s r="34">
+                              <a:s>Patient</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="35">
+                              <a:s>gender</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="36">
+                           <a:s>'female'</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> then </a:s>
+                     <a:s r="41">
+                        <a:s>Code { </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="38">
+                              <a:s>'F'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>system: </a:s>
+                           <a:s r="39">
+                              <a:s>'http://hl7.org/fhir/v3/AdministrativeGender'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>display: </a:s>
+                           <a:s r="40">
+                              <a:s>'Female'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> }</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="43">
+      else null
+    end</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="44" locator="38:3-42:7" resultTypeName="t:Code" xsi:type="Case">
+            <caseItem localId="33" locator="39:7-39:130">
+               <when localId="28" locator="39:12-39:34" resultTypeName="t:Boolean" xsi:type="Equal">
+                  <signature name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="26" locator="39:12-39:25" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source path="gender" xsi:type="Property">
+                        <source localId="25" locator="39:12-39:18" resultTypeName="fhir:Patient" name="Patient" xsi:type="ExpressionRef"/>
+                     </source>
+                  </operand>
+                  <operand localId="27" locator="39:29-39:34" resultTypeName="t:String" valueType="t:String" value="male" xsi:type="Literal"/>
+               </when>
+               <then localId="32" locator="39:41-39:130" resultTypeName="t:Code" classType="t:Code" xsi:type="Instance">
+                  <element name="code">
+                     <value localId="29" locator="39:54-39:56" resultTypeName="t:String" valueType="t:String" value="M" xsi:type="Literal"/>
+                  </element>
+                  <element name="system">
+                     <value localId="30" locator="39:67-39:111" resultTypeName="t:String" valueType="t:String" value="http://hl7.org/fhir/v3/AdministrativeGender" xsi:type="Literal"/>
+                  </element>
+                  <element name="display">
+                     <value localId="31" locator="39:123-39:128" resultTypeName="t:String" valueType="t:String" value="Male" xsi:type="Literal"/>
+                  </element>
+               </then>
+            </caseItem>
+            <caseItem localId="42" locator="40:7-40:134">
+               <when localId="37" locator="40:12-40:36" resultTypeName="t:Boolean" xsi:type="Equal">
+                  <signature name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="35" locator="40:12-40:25" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source path="gender" xsi:type="Property">
+                        <source localId="34" locator="40:12-40:18" resultTypeName="fhir:Patient" name="Patient" xsi:type="ExpressionRef"/>
+                     </source>
+                  </operand>
+                  <operand localId="36" locator="40:29-40:36" resultTypeName="t:String" valueType="t:String" value="female" xsi:type="Literal"/>
+               </when>
+               <then localId="41" locator="40:43-40:134" resultTypeName="t:Code" classType="t:Code" xsi:type="Instance">
+                  <element name="code">
+                     <value localId="38" locator="40:56-40:58" resultTypeName="t:String" valueType="t:String" value="F" xsi:type="Literal"/>
+                  </element>
+                  <element name="system">
+                     <value localId="39" locator="40:69-40:113" resultTypeName="t:String" valueType="t:String" value="http://hl7.org/fhir/v3/AdministrativeGender" xsi:type="Literal"/>
+                  </element>
+                  <element name="display">
+                     <value localId="40" locator="40:125-40:132" resultTypeName="t:String" valueType="t:String" value="Female" xsi:type="Literal"/>
+                  </element>
+               </then>
+            </caseItem>
+            <else asType="t:Code" xsi:type="As">
+               <operand localId="43" locator="41:12-41:15" resultTypeName="t:Any" xsi:type="Null"/>
+            </else>
+         </expression>
+      </def>
+   </statements>
+</library>
